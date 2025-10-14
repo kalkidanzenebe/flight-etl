@@ -5,7 +5,6 @@ database:
 # File Paths
 paths:
   input_data: "data/flights_sample_3m.csv"
-  output_data: "data/processed_flights.csv"
 
 # ETL Settings
 etl:
