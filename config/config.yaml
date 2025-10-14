@@ -1,0 +1,19 @@
+# Database Configuration
+database:
+  user: "your_username"
+  password: "your_password"
+  host: "localhost"
+  port: 5432
+  name: "flightdb"
+  type: "postgresql+psycopg2"
+
+# File Paths
+paths:
+  input_data: "data/flights_sample_3m.csv"
+  output_data: "data/processed_flights.csv"
+
+# ETL Settings
+etl:
+  chunk_size: 10000
+  delimiter: ","
+  encoding: "utf-8"

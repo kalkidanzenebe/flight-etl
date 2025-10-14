@@ -100,8 +100,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
-.venv
 env/
 venv/
 ENV/
@@ -137,13 +135,6 @@ data/
 *.h5
 *.hdf5
 
-# Config files with sensitive information
-config/*.yaml
-config/*.yml
-config/*.json
-!config/example*
-!config/sample*
-
 # Log files
 *.log
 
@@ -155,6 +146,10 @@ config/*.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Environment variables
+.env
+!.env.example
 
 # IDE specific files
 .vscode/
