@@ -21,6 +21,24 @@ fligh-etl-core/
 └── README.md              # This file
 ```
 
+## Enhanced Features
+
+### Performance Optimizations
+- **Chunked Processing**: Large datasets are processed in chunks to manage memory efficiently
+- **Progress Tracking**: Real-time progress updates during long-running operations
+- **Error Handling**: Comprehensive error handling throughout the pipeline
+- **Connection Testing**: Database connection verification before loading data
+
+### Data Quality
+- **Data Validation**: Comprehensive validation and cleaning of flight data
+- **Type Conversion**: Proper conversion of datetime and numeric fields
+- **Constraint Enforcement**: Ensures data integrity (e.g., airport codes, non-negative values)
+- **Missing Data Handling**: Systematic approach to handling missing values
+
+### Security
+- **Environment Variables**: Database credentials stored securely in environment variables
+- **Configuration Separation**: Non-sensitive config separated from sensitive credentials
+
 ## Setup Instructions
 
 1. **Install Dependencies**:
@@ -38,24 +56,11 @@ fligh-etl-core/
    due to its large size (approximately 614MB). This approach follows best practices 
    for data science projects where large datasets are not committed to version control.
 
-4. **For Assignment Submission**:
-   Since the data file is not included in the repository, you should include instructions 
-   for your instructor to either:
-   - Obtain the dataset separately
-   - Generate a sample dataset using the provided script
-   - Use their own flight dataset with a similar schema
-
 ## Running the ETL Pipeline
 
 ```bash
 python scripts/etl_pipeline.py
 ```
-
-## Security Features
-
-- Database credentials are stored in environment variables, not in the code
-- Sensitive files are excluded from version control via `.gitignore`
-- Configuration is separated from credentials for better security
 
 ## Business Scenario
 
@@ -68,7 +73,7 @@ This ETL pipeline processes flight data which can be used for:
 
 ## Schema Design
 
-The PostgreSQL database schema is designed to efficiently store flight information including:
+The PostgreSQL database schema accommodates flight information including:
 - Flight identifiers and airline information
 - Origin and destination airports
 - Departure and arrival times
@@ -79,6 +84,22 @@ The PostgreSQL database schema is designed to efficiently store flight informati
 ## Performance Considerations
 
 Given the large dataset size (3 million+ records), the ETL pipeline is designed with performance in mind:
-- Efficient data processing using Pandas
-- Proper error handling
-- Progress tracking during long-running operations
+- Memory-efficient chunked processing
+- Progress tracking for long-running operations
+- Connection pooling for database operations
+- Optimized data type handling
+
+## Testing Individual Components
+
+You can test individual components of the ETL pipeline:
+
+```bash
+# Test data extraction
+python scripts/extract.py
+
+# Test data transformation
+python scripts/transform.py
+
+# Test data loading (requires database setup)
+python scripts/load.py
+```
