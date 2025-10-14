@@ -137,6 +137,13 @@ data/
 *.h5
 *.hdf5
 
+# Config files with sensitive information
+config/*.yaml
+config/*.yml
+config/*.json
+!config/example*
+!config/sample*
+
 # Log files
 *.log
 
