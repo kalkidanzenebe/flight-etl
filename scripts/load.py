@@ -2,7 +2,7 @@ import pandas as pd
 import yaml
 import os
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 import time
 
@@ -58,7 +58,7 @@ def load(df, table_name, chunk_size=10000):
         
         # Test connection
         with engine.connect() as conn:
-            conn.execute("SELECT 1")
+            conn.execute(text("SELECT 1"))
         print("✅ Database connection successful")
         
         # Load data in chunks for large datasets
@@ -93,7 +93,7 @@ def load(df, table_name, chunk_size=10000):
         
         # Verify data was loaded
         with engine.connect() as conn:
-            result = conn.execute(f"SELECT COUNT(*) FROM {table_name}")
+            result = conn.execute(text(f"SELECT COUNT(*) FROM {table_name}"))
             row_count = result.fetchone()[0]
             print(f"🔍 Verified: {row_count} rows in table '{table_name}'")
         
